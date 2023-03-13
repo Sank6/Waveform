@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>three.js webaudio - visualizer</title>
+	<title>waveform</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
@@ -85,7 +85,7 @@
 
 			camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 1000);
 			camera.position.z = zCoord + 5
-			controls = new OrbitControls(camera, renderer.domElement)
+			//controls = new OrbitControls(camera, renderer.domElement)
 
 			const listener = new THREE.AudioListener();
 
@@ -126,7 +126,6 @@
 
 		function animate() {
 			requestAnimationFrame(animate);
-			controls.update();
 			render();
 		}
 
@@ -139,7 +138,7 @@
 			zCoord -= 0.1
 			camera.position.z -= 0.1
 			camera.lookAt(scene.position);
-			controls.update();
+			//controls.update();
 
 			analyser.getFrequencyData();
 			pointsRight = []
