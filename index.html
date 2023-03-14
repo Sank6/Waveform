@@ -62,7 +62,7 @@
 		let lines = [];
 		let pointsRight = [];
 		let pointsLeft = [];
-		let zCoord = 1000;
+		let zCoord = 10000;
 		let controls = null;
 
 		const startButton = document.getElementById('startButton');
@@ -99,7 +99,6 @@
 			mediaElement.currentTime = 0;
 			mediaElement.play();
 			audio.setMediaElementSource(mediaElement);
-
 
 			const handlePause = () => (mediaElement.paused) ? mediaElement.play() : mediaElement.pause();
 
@@ -162,9 +161,12 @@
 		function render() {
 			if (mediaElement.paused) return renderer.render(scene, camera);
 			// Remove first line
-			// scene.remove(lines[0][0])
-			// scene.remove(lines[0][1])
-			// lines.shift()
+
+			if (lines.length > 1000) {
+				scene.remove(lines[0][0])
+				scene.remove(lines[0][1])
+				lines.shift()
+			}
 
 			zCoord -= 0.1
 			camera.position.z -= 0.1
